@@ -11,6 +11,10 @@ public class Book {
     private String shortDesc;
     private String longDesc;
 
+    private boolean isExpended;
+
+
+
 
     public Book(int id, String name, String author, int pages, String imageUrl, String shortDesc, String longDesc) {
         this.id = id;
@@ -20,6 +24,14 @@ public class Book {
         this.imageUrl = imageUrl;
         this.shortDesc = shortDesc;
         this.longDesc = longDesc;
+        isExpended = false;
+    }
+
+    public boolean isExpended() {
+        return isExpended;
+    }
+    public void setExpended(boolean expended) {
+        isExpended = expended;
     }
 
     public int getId() {

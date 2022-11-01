@@ -1,6 +1,9 @@
 package com.antonio.mylibrary;
 
+import static com.antonio.mylibrary.BookActivity.BOOK_ID_KEY;
+
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +51,9 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
         holder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, books.get(position).getName()+ " selected", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext,BookActivity.class);
+                intent.putExtra(BOOK_ID_KEY,books.get(position).getId());
+                mContext.startActivity(intent);
             }
         });
 

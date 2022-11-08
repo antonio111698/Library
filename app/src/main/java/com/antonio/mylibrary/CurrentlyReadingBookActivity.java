@@ -7,22 +7,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
-public class AlreadyReadBookActivity extends AppCompatActivity {
-
+public class CurrentlyReadingBookActivity extends AppCompatActivity {
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_already_read_book);
-        RecyclerView recyclerView = findViewById(R.id.bookRecView);
+        setContentView(R.layout.activity_currently_reading_book);
 
-        BookRecViewAdapter adapter = new BookRecViewAdapter(this,"alreadyRead");
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView bookRecView= findViewById(R.id.currentlyReadingBookRecView);
+        BookRecViewAdapter adapter = new BookRecViewAdapter(this,"currentlyReading");
 
-        adapter.setBooks(Utils.getAlreadyReadBooks());
+        bookRecView.setAdapter(adapter);
+        bookRecView.setLayoutManager(new LinearLayoutManager(this));
+
+        adapter.setBooks(Utils.getCurrentlyReadingBooks());
+
+
 
     }
 

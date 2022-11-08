@@ -7,22 +7,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
-public class AlreadyReadBookActivity extends AppCompatActivity {
-
-
-
+public class FavoriteBooksActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_already_read_book);
-        RecyclerView recyclerView = findViewById(R.id.bookRecView);
+        setContentView(R.layout.activity_favorite_books);
 
-        BookRecViewAdapter adapter = new BookRecViewAdapter(this,"alreadyRead");
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView favoriteBooksRecView = findViewById(R.id.favoriteBooksRecView);
+        BookRecViewAdapter adapter = new BookRecViewAdapter(this,"favoriteBooks");
 
-        adapter.setBooks(Utils.getAlreadyReadBooks());
+        favoriteBooksRecView.setAdapter(adapter);
+        favoriteBooksRecView.setLayoutManager(new LinearLayoutManager(this));
+
+        adapter.setBooks(Utils.getFavoriteBooks());
 
     }
 

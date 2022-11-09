@@ -1,7 +1,9 @@
 package com.antonio.mylibrary;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initViews();  //Initializing every button from our acitivity_main layout
+        initViews();  //Initializing every view from our acitivity_main layout
 
         btnAllBooks.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +58,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Utils.getInstance();
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle(getString(R.string.app_name));
+                builder.setMessage("Designed and Developed by Antonio.\n"+
+                        "Check my website for more awesome applications");
+                builder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+
+                builder.setPositiveButton("Visit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(MainActivity.this,WebsiteActivity.class);
+                        intent.putExtra("url","https://www.google.com");
+                        startActivity(intent);
+                    }
+                });
+                builder.create().show();
+            }
+        });
+
+        Utils.getInstance(this);
     }
 
     private void initViews() {

@@ -20,7 +20,7 @@ public class FavoriteBooksActivity extends AppCompatActivity {
         favoriteBooksRecView.setAdapter(adapter);
         favoriteBooksRecView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter.setBooks(Utils.getFavoriteBooks());
+        adapter.setBooks(Utils.getInstance(this).getFavoriteBooks());
 
     }
 
